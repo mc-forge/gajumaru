@@ -34,6 +34,15 @@ function install-rpm {
     sudo dnf install -y erlang erlang-tools
 }
 
+function install-yum {
+    echo "  Installing using Yum..."
+    sudo yum upgrade -y
+    sudo yum install -y gcc curl g++ dpkg-dev build-essential automake autoconf \
+                        libncurses-dev libssl-dev flex xsltproc libwxgtk3.2-dev \
+                        wget vim git
+    sudo yum install -y erlang erlang-tools    
+}
+
 function install-pacman {
     echo "  Installing using pacman..."
     sudo pacman -S wget erlang erlang-wx --noconfirm
@@ -44,6 +53,8 @@ function perform-base-install {
     has_apt=$?
     which dnf > /dev/null
     has_dnf=$?
+    which yum > /dev/null
+    has_yum=$?
     which pacman > /dev/null
     has_pac=$?
 
@@ -53,6 +64,9 @@ function perform-base-install {
     elif [ $has_dnf -eq 0 ];
     then
         install-rpm
+    elif [ $has_yum -eq 0 ];
+    then
+        install-yum
     elif [ $has_pac -eq 0 ];
     then
         install-pacman
