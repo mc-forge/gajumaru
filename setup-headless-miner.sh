@@ -49,22 +49,6 @@ config_file=$config_dir/gmhive_client_config.json
 service_dir=/etc/systemd/system/
 zomp_file=uwiger-gmhive_client
 
-echo "Checking the zomp/zx is installed..."
-found=$(which zx)
-if [ $? -ne 0 ]; then
-  echo "zx not installed, run:" 1>&2;
-  echo "  wget https://raw.githubusercontent.com/shanepreater/gajumaru/refs/heads/main/quick-start.sh  && bash quick-start.sh" 1>&2;
-  exit 2
-fi
-
-echo "checking we have git installed...."
-found=$(which git)
-if [ $? -ne 0 ]; then
-  echo "Git not installed, run:" 1>&2;
-  echo "  wget https://raw.githubusercontent.com/shanepreater/gajumaru/refs/heads/main/quick-start.sh  && bash quick-start.sh" 1>&2;
-  exit 2
-fi
-
 echo "Creating the run script..."
 script_path="$HOME/bin"
 erl=$(which erl)
@@ -95,13 +79,13 @@ EOF
 chmod 755 $script_path/headless-miner.sh
 
 echo "Ensuring the gajuminer directory exists..."
-sudo mkdir -p $config_dir
-sudo chmod 755 $config_dir
+mkdir -p $config_dir
+chmod 755 $config_dir
 
 echo "Creating the configuration file..."
 write_config ~/config.json $pubkey $miners
-sudo cp ~/config.json $config_file
-sudo chmod 644 $config_file
+cp ~/config.json $config_file
+chmod 644 $config_file
 
 # echo "Creating the daemon service..."
 # cat > ~/gajuminer.service <<EOF
