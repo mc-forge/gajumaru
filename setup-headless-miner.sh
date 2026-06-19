@@ -126,6 +126,6 @@ sudo chmod 644 $config_file
 # echo "Starting the miner..."
 # sudo systemctl start gajuminer
 
-$script_path/headless-miner.sh $pubkey
+# $script_path/headless-miner.sh $pubkey
 
 echo "All done!"
