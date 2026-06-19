@@ -25,8 +25,8 @@ echo "# 3. run Craig's script"
 echo "# 4. Import the realms"
 
 
-zx import realm uwiger.zrf
+~/bin/zx import realm uwiger.zrf
 check-fail $? "Unable to install the uwiger realm"
-zx import realm qpq.zrf
+~/bin/zx import realm qpq.zrf
 check-fail $? "Unable to install the qpq realm"
 
