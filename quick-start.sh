@@ -18,11 +18,11 @@ function check-fail {
 
 function install-deb {
     echo "  Installing using Aptitude..."
-    sudo apt upgrade 
-    sudo apt install -y gcc curl g++ dpkg-dev build-essential automake autoconf \
+    apt upgrade 
+    apt install -y gcc curl g++ dpkg-dev build-essential automake autoconf \
                         libncurses-dev libssl-dev flex xsltproc libwxgtk3.2-dev \
                         wget vim git
-    sudo apt install -y erlang --no-install-recommends
+    apt install -y erlang --no-install-recommends
 }
 
 function install-rpm {
