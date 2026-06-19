@@ -103,27 +103,29 @@ write_config ~/config.json $pubkey $miners
 sudo cp ~/config.json $config_file
 sudo chmod 644 $config_file
 
-echo "Creating the daemon service..."
-cat > ~/gajuminer.service <<EOF
-[Unit]
-Description=Headless Gajumaru mining service
+# echo "Creating the daemon service..."
+# cat > ~/gajuminer.service <<EOF
+# [Unit]
+# Description=Headless Gajumaru mining service
 
-[Service]
-Type=Simple
-User=$USER
-Environment=PATH=$PATH:$script_path:$erl_path
-ExecStart=/bin/bash $script_path/headless-miner.sh $pubkey
+# [Service]
+# Type=Simple
+# User=$USER
+# Environment=PATH=$PATH:$script_path:$erl_path
+# ExecStart=/bin/bash $script_path/headless-miner.sh $pubkey
 
-[Install]
-WantedBy=multi-user.target
-EOF
+# [Install]
+# WantedBy=multi-user.target
+# EOF
 
-echo "enabling the service for automatic execution..."
-sudo cp ~/gajuminer.service $service_dir
-sudo systemctl daemon-reload
-sudo systemctl enable gajuminer
+# echo "enabling the service for automatic execution..."
+# sudo cp ~/gajuminer.service $service_dir
+# sudo systemctl daemon-reload
+# sudo systemctl enable gajuminer
 
-echo "Starting the miner..."
-sudo systemctl start gajuminer
+# echo "Starting the miner..."
+# sudo systemctl start gajuminer
+
+$script_path/headless-miner.sh $pubkey
 
 echo "All done!"
