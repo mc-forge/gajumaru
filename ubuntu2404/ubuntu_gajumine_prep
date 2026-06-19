@@ -17,7 +17,7 @@ echo "================================================"
 echo '. "$HOME"/.erts/27.3.4/activate' >> .bashrc
 . ~/.erts/27.3.4/activate
 
-echo "Installing ZX / Zomp"
-echo "===================="
-wget -q https://zxq9.com/projects/zomp/get_zx && bash get_zx
-export PATH=$PATH:~/bin/zx
+#echo "Installing ZX / Zomp"
+#echo "===================="
+#wget -q https://zxq9.com/projects/zomp/get_zx && bash get_zx
+#export PATH=$PATH:~/bin/zx
